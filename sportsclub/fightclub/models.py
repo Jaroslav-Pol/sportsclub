@@ -1,12 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 # Create your models here.
 
 class Group(models.Model):
+    """Galimos grupės"""
     name = models.CharField('Grupės pavadinimas', max_length=200, help_text='Įveskite grupės pavadinimą')
     week_day = models.CharField('Savaitės dienos', max_length=200, help_text='Įrašykite dienas, kuriomis '
-                                                                                      'vyksta grupės treniruotės')
+                                                                             'vyksta grupės treniruotės')
     start_time = models.CharField('Pradžios laikas', max_length=200)
     description = models.TextField('Aprašymas', max_length=1000, help_text='Trumpas aprašymas')
 
@@ -16,6 +18,7 @@ class Group(models.Model):
     class Meta:
         verbose_name = "Grupė"
         verbose_name_plural = "Grupės"
+
 
 class Membership(models.Model):
     """Galimos narystės"""
@@ -28,6 +31,7 @@ class Membership(models.Model):
 
     class Meta:
         verbose_name = "Narystė"
+
 
 class UserMembership(models.Model):
     """Modelis parodantis konkrėtaus vartotojo turimas narystes ir grupes"""

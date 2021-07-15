@@ -14,6 +14,10 @@ class MembershipAdmin(admin.ModelAdmin):
 
 class UserMembershipAdmin(admin.ModelAdmin):
     list_display = ('member', 'membership', 'display_group')
+    # filtravimas pagal narystes ir grupes
+    list_filter = ('membership', 'group')
+
+
 admin.site.register(Group, GroupAdmin)
 admin.site.register(Membership, MembershipAdmin)
 admin.site.register(UserMembership, UserMembershipAdmin)
