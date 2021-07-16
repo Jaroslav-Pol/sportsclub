@@ -24,4 +24,9 @@ def group(request, group_id):
     single_group = get_object_or_404(Group, pk=group_id)
     return render(request, 'fightclub/group.html', {'group': single_group})
 
-
+def prices(request):
+    memberships = Membership.objects.all()
+    context = {
+        'memberships': memberships,
+    }
+    return render(request, 'fightclub/prices.html', context=context)

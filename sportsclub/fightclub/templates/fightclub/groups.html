@@ -4,7 +4,8 @@
   <h1>Mūsų grupės:</h1>
   <hr/>
   {% for group in groups %}
-  <a class="link-primary" href="{% url 'group' group.id %}"><h4>{{ group.name }} </h4></a>
+    <a class="link-primary" href="{% url 'group' group.id %}"><h4>{{ group.name }} </h4></a>
     <p>{{ group.week_day }} {{ group.start_time }}</p>
+    <br>
   {% endfor %}
 {% endblock %}>

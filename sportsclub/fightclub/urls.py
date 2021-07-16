@@ -7,4 +7,6 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('groups/', views.groups, name='groups'),
     path('groups/<int:group_id>', views.group, name='group'),
+    path('prices', views.prices, name='prices'),
+
 ]
