@@ -32,4 +32,4 @@ def prices(request):
     return render(request, 'fightclub/prices.html', context=context)
 
 def profile(request):
-    return render(request, 'registration/profile.html')
+    return render(request, 'fightclub/profile.html')
