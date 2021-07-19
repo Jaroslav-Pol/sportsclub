@@ -30,3 +30,6 @@ def prices(request):
         'memberships': memberships,
     }
     return render(request, 'fightclub/prices.html', context=context)
+
+def profile(request):
+    return render(request, 'registration/profile.html')
