@@ -32,13 +32,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'fightclub',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'fightclub',
+
 ]
 
 MIDDLEWARE = [
@@ -126,4 +127,10 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+#login redirect settings
 LOGIN_REDIRECT_URL = '/fightclub/accounts/profile/'
+
+# media folder settings
+MEDIA_ROOT = os.path.join(BASE_DIR, 'fightclub/media')
+
+MEDIA_URL = '/media/'
