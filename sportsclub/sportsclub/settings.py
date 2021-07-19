@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+from . import email_settings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,6 +29,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+
+# data for email settings we take from email_settings.py
+EMAIL_BACKEND = email_settings.EMAIL_BACKEND
+EMAIL_HOST = email_settings.EMAIL_HOST
+EMAIL_POST = email_settings.EMAIL_POST
+EMAIL_USE_TLS = email_settings.EMAIL_USE_TLS
+EMAIL_HOST_USER = email_settings.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = email_settings.EMAIL_HOST_PASSWORD
 
 # Application definition
 
