@@ -31,6 +31,8 @@ class SportTestAdmin(admin.ModelAdmin):
 
 class UserSportResultAdmin(admin.ModelAdmin):
     list_display = ('name', 'user', 'date', 'result', 'comment')
+    list_filter = ('name', 'date')
+    search_fields = ('user__username',)
 
 
 admin.site.register(Group, GroupAdmin)
