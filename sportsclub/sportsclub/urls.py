@@ -23,6 +23,7 @@ urlpatterns = [
     path('fightclub/admin/', admin.site.urls),
     path('fightclub/', include('fightclub.urls')),
     path('', RedirectView.as_view(url='fightclub/', permanent=True)),
+    path('oauth/', include('social_django.urls', namespace='social')),
 
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
