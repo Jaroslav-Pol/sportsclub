@@ -1,7 +1,8 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Group, Membership, UserMembership
+from .models import Group, Membership, UserMembership, UserSportResult, SportTest
+
 
 class UserMembershipInline(admin.TabularInline):
     model = UserMembership
@@ -24,8 +25,16 @@ class UserMembershipAdmin(admin.ModelAdmin):
     search_fields = ('member__username', 'membership__name')
 
 
+class SportTestAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description', 'result_exp', 'result_sport')
+
+
+class UserSportResultAdmin(admin.ModelAdmin):
+    list_display = ('name', 'user', 'date', 'result', 'comment')
 
 
 admin.site.register(Group, GroupAdmin)
 admin.site.register(Membership, MembershipAdmin)
 admin.site.register(UserMembership, UserMembershipAdmin)
+admin.site.register(SportTest, SportTestAdmin)
+admin.site.register(UserSportResult, UserSportResultAdmin)

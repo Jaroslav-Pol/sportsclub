@@ -49,5 +49,39 @@ class UserMembership(models.Model):
         return f"{self.member}, narystė: {self.membership}"
 
     class Meta:
-        verbose_name = "Vartotojo narystė"
-        verbose_name_plural = "Vartotojų narystės"
+        verbose_name = "Kliento narystė"
+        verbose_name_plural = "Klientų narystės"
+
+
+#
+# class UserProfile(models.Model):
+#     """Vartotojo profilio papildymas"""
+#     user = models.OneToOneField(User)
+
+class SportTest(models.Model):
+    name = models.CharField('Testo pavadinimas', max_length=200)
+    result_exp = models.CharField('Pažengusio rezultato slenkstis', max_length=200)
+    result_sport = models.CharField('Sportinio rezultato slenkstis', max_length=200)
+    description = models.TextField('Aprašymas', max_length=1000)
+
+    def __str__(self):
+        return f"{self.name}"
+
+    class Meta:
+        verbose_name = "Sportinis testas"
+        verbose_name_plural = "Sportiniai testai"
+
+
+class UserSportResult(models.Model):
+    name = models.ForeignKey(SportTest, verbose_name='Testas', on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.ForeignKey(User, verbose_name='Narys', on_delete=models.SET_NULL, null=True, blank=True)
+    date = models.DateField('Atlikimo data', null=True, blank=True)
+    result = models.CharField('Rezultatas', max_length=200)
+    comment = models.TextField('Komentaras', max_length=1000)
+
+    def __str__(self):
+        return f"{self.name}, narys: {self.user}, data: {self.date}, rezultatas: {self.result}"
+
+    class Meta:
+        verbose_name = "Kliento sportinis rezultatas"
+        verbose_name_plural = "Klientų sportiniai rezultatai"
