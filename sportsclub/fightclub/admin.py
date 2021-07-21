@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Group, Membership, UserMembership, UserSportResult, SportTest
+from .models import Group, Membership, UserMembership, UserSportResult, SportTest, UserProfile
 
 
 class UserMembershipInline(admin.TabularInline):
@@ -40,3 +40,4 @@ admin.site.register(Membership, MembershipAdmin)
 admin.site.register(UserMembership, UserMembershipAdmin)
 admin.site.register(SportTest, SportTestAdmin)
 admin.site.register(UserSportResult, UserSportResultAdmin)
+admin.site.register(UserProfile)

@@ -1,0 +1,14 @@
+{% extends "fightclub/base.html" %}
+
+{% block content %}
+
+<h2>Mano rezultatai</h2>
+<br>
+{% for result in results %}
+    <p>{{ result.date }}</p>
+    <p>{{ result.name }}. Rezultatas: {{ result.result }}</p>
+<br>
+
+{% endfor %}
+
+{% endblock %}

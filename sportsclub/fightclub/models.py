@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+
 # Create your models here.
 
 class Group(models.Model):
@@ -85,3 +86,13 @@ class UserSportResult(models.Model):
     class Meta:
         verbose_name = "Kliento sportinis rezultatas"
         verbose_name_plural = "Klientų sportiniai rezultatai"
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    birth_date = models.DateField('Gimimo data', null=True, blank=True)
+
+    def __str__(self):
+        return f'{self.user.username} {self.birth_date}'
+
+

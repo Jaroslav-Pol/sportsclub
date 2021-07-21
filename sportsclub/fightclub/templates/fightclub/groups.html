@@ -1,7 +1,7 @@
 {% extends "fightclub/base.html" %}
 
 {% block content %}
-  <h1>Mūsų grupės:</h1>
+  <h2>Mūsų grupės:</h2>
   <hr/>
   {% for group in groups %}
     <a class="link-primary" href="{% url 'group' group.id %}"><h4>{{ group.name }} </h4></a>
