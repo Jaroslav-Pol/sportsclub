@@ -1,10 +1,12 @@
 {% extends "fightclub/base.html" %}
 
 {% block content %}
-  <h2>Mūsų grupės:</h2>
-  <hr/>
-  <h4>{{ group.name }} </h4>
-  <p>{{ group.week_day }} {{ group.start_time }}</p>
-  <h5>Aprašymas</h5>
-  <p>{{ group.description }}</p>
-{% endblock %}>
+<h2>Mūsų grupės:</h2>
+<br>
+<div class="container">
+    <h4>{{ group.name }} </h4>
+    <p>{{ group.week_day }} {{ group.start_time }}</p>
+    <h5>Aprašymas</h5>
+    <p>{{ group.description }}</p>
+</div>
+{% endblock %}

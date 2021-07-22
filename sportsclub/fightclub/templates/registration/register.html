@@ -1,0 +1,48 @@
+{% extends "fightclub/base.html" %}
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-danger" role="alert">
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+
+<div class="container register">
+    <h2>Registracija</h2><br/>
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Vartotojo vardas</label>
+                <input name="username" type="text" class="form-control" id="username">
+            </div>
+            <div class="form-group">
+                <label for="first_name">Vardas</label>
+                <input name="first_name" type="text" class="form-control" id="first_name">
+            </div>
+            <div class="form-group">
+                <label for="last_name">Pavardė</label>
+                <input name="last_name" type="text" class="form-control" id="last_name">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">El. paštas</label>
+                <input name="email" type="email" class="form-control" id="exampleInputEmail1">
+            </div>
+            <div class="form-group">
+                <label for="password">Slaptažodis</label>
+                <input name="password" type="password" class="form-control" id="password">
+            </div>
+            <div class="form-group">
+                <label for="password2">Pakartoti slaptažodį</label>
+                <input name="password2" type="password" class="form-control" id="password2" aria-describedby="pwd2Help">
+            </div>
+            <button type="submit" class="btn btn-primary register-button">Registruotis</button>
+        </form>
+    </div>
+    <p>Esate registruotas narys? <a href="{% url 'login' %}"><strong>Prisijunkite!</strong></a></p>
+</div>
+
+
+{% endblock %}

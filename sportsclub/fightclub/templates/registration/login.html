@@ -6,10 +6,15 @@
 <p>Prisijungimo klaida, bandykite dar kartą!</p>
 {% endif %}
 
-{% if next %}
-{% if user.is_authenticated %}
-<p>Neturite prieigos prie šios informacijos. Turite prisijungti.</p>
+{% if registration %}
+<p>Sekmingai užsiregistravote! Prašome prisijungti:</p>
 {% endif %}
+
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Neturite prieigos prie šios informacijos. Turite prisijungti.</p>
+    {% endif %}
 {% endif %}
 
 <form method="post" action="{% url 'login' %}">
