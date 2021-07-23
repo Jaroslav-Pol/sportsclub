@@ -11,7 +11,7 @@
 
 <div class="container register">
     <h2>Registracija</h2><br/>
-    <div class="container">
+    <div class="container" style="width: 500px;">
         <form method="post">
             {% csrf_token %}
             <div class="form-group">
@@ -38,9 +38,11 @@
                 <label for="password2">Pakartoti slaptažodį</label>
                 <input name="password2" type="password" class="form-control" id="password2" aria-describedby="pwd2Help">
             </div>
+            <br>
             <button type="submit" class="btn btn-primary register-button">Registruotis</button>
         </form>
     </div>
+    <br>
     <p>Esate registruotas narys? <a href="{% url 'login' %}"><strong>Prisijunkite!</strong></a></p>
 </div>
 

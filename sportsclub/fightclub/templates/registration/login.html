@@ -14,31 +14,32 @@
 {% endfor %}
 {% endif %}
 
-
 {% if next %}
 {% if user.is_authenticated %}
 <p>Neturite prieigos prie šios informacijos. Turite prisijungti.</p>
 {% endif %}
 {% endif %}
+<div class="container">
+    <h2>Prisijungimas</h2><br/>
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Vartotojas:</td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td>Slaptažodis:</td>
+                <td>{{ form.password }}</td>
+            </tr>
+        </table>
+        <input type="submit" value="Prisijungti"/>
+        <input type="hidden" name="next" value="{{ next }}"/>
+    </form>
+    <p><strong>-- OR --</strong></p>
+    <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
 
-<form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-    <table>
-        <tr>
-            <td>Vartotojas:</td>
-            <td>{{ form.username }}</td>
-        </tr>
-        <tr>
-            <td>Slaptažodis:</td>
-            <td>{{ form.password }}</td>
-        </tr>
-    </table>
-    <input type="submit" value="Prisijungti"/>
-    <input type="hidden" name="next" value="{{ next }}"/>
-</form>
-<p><strong>-- OR --</strong></p>
-<a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
-
-<p><a href="{% url 'password_reset' %}">Pamiršote slaptažodį?</a></p>
+    <p><a href="{% url 'password_reset' %}">Pamiršote slaptažodį?</a></p>
+</div>
 
 {% endblock %}
