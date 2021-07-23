@@ -18,7 +18,6 @@ from . import social_settings
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -29,7 +28,6 @@ SECRET_KEY = 'django-insecure-iw288b3l96_wa9j09dyq^d#vf)e%l=9&1lfull-wv%g@&!@jn!
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # data for email settings we take from email_settings.py
 EMAIL_BACKEND = email_settings.EMAIL_BACKEND
@@ -43,13 +41,14 @@ EMAIL_HOST_PASSWORD = email_settings.EMAIL_HOST_PASSWORD
 
 INSTALLED_APPS = [
     'fightclub',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'social_django', #social auth app
+    'social_django',  # social auth app
     'sslserver',
 
 ]
@@ -70,7 +69,7 @@ ROOT_URLCONF = 'sportsclub.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'),],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -87,7 +86,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'sportsclub.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -97,7 +95,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -117,7 +114,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -131,7 +127,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
@@ -142,7 +137,7 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#login settings
+# login settings
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = '/fightclub/accounts/profile/'
@@ -156,13 +151,12 @@ MEDIA_URL = '/media/'
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.facebook.FacebookOAuth2',
 
-
     'django.contrib.auth.backends.ModelBackend',
 )
 
-#social settings data
+# social settings data
 
 SOCIAL_AUTH_FACEBOOK_KEY = social_settings.SOCIAL_AUTH_FACEBOOK_KEY
 SOCIAL_AUTH_FACEBOOK_SECRET = social_settings.SOCIAL_AUTH_FACEBOOK_SECRET
 
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

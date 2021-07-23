@@ -1,11 +1,13 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Membership, UserMembership, Group, SportTest, UserProfile, UserSportResult
-from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_protect
 from django.contrib import messages
-from django.contrib.auth.password_validation import validate_password
+from .forms import ContactForm
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse
+
 # siap sau zen of python
 import this
 
@@ -80,10 +82,35 @@ def register(request):
                     return redirect('register')
                 else:
                     # jeigu viskas tvarkoje, sukuriame naują vartotoją
-                    User.objects.create_user(username=username,first_name=first_name, last_name=last_name,
+                    User.objects.create_user(username=username, first_name=first_name, last_name=last_name,
                                              email=email, password=password)
+                    messages.success(request, 'Registracija sekminga! Prisijunkite!')
                     return redirect('login')
         else:
             messages.error(request, 'Slaptažodžiai nesutampa!')
             return redirect('register')
     return render(request, 'registration/register.html')
+
+
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            subject = 'Website Inquiry'
+            body = {
+                'first_name': form.cleaned_data['first_name'],
+                'last_name': form.cleaned_data['last_name'],
+                'email': form.cleaned_data['email_address'],
+                'message': form.cleaned_data['message'],
+            }
+            message = '\n'.join(body.values())
+
+            try:
+                send_mail(subject, message, 'catastronaut.teting@gmail.com', ['catastronaut.teting@gmail.com'])
+            except BadHeaderError:
+                return HttpResponse('Netinkama antraštė')
+            messages.success(request, 'Jūsų žinutė išsiūsta!')
+            return redirect('index')
+
+    form = ContactForm()
+    return render(request, 'fightclub/contact.html', {'form': form})
