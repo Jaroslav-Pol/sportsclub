@@ -4,14 +4,14 @@
 <h2>Mano profilis</h2>
 <br>
 <div class="container">
-    <h4>Labas {{ user.username }}!</h4>
+    <h3>Labas {{ user.username }}!</h3>
     <br>
-    <h3>Mano grupės:</h3>
+    <h4>Mano grupės:</h4>
     <a href="{% url 'groups' %}">
         <p>{{ membership.display_group }}</p>
     </a>
     <br>
-    <h3>Mano narystė:</h3>
+    <h4>Mano narystė:</h4>
     <a href="{% url 'prices' %}">
         <p>{{ membership.membership }}</p>
     </a>

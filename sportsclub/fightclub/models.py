@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-
 # Create your models here.
 
 class Group(models.Model):
@@ -54,11 +53,6 @@ class UserMembership(models.Model):
         verbose_name_plural = "Klientų narystės"
 
 
-#
-# class UserProfile(models.Model):
-#     """Vartotojo profilio papildymas"""
-#     user = models.OneToOneField(User)
-
 class SportTest(models.Model):
     name = models.CharField('Testo pavadinimas', max_length=200)
     result_exp = models.CharField('Pažengusio rezultato slenkstis', max_length=200)
@@ -89,10 +83,13 @@ class UserSportResult(models.Model):
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, verbose_name='Vartotojas', on_delete=models.CASCADE)
+    phone_nr = models.CharField('Telefono numeris', max_length=20, null=True, blank=True)
     birth_date = models.DateField('Gimimo data', null=True, blank=True)
 
     def __str__(self):
-        return f'{self.user.username} {self.birth_date}'
+        return f'{self.user.username}'
 
-
+    class Meta:
+        verbose_name = "Kliento profilis"
+        verbose_name_plural = "Klientų profiliai"

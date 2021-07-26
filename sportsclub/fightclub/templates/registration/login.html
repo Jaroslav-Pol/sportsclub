@@ -33,12 +33,13 @@
                 <td>{{ form.password }}</td>
             </tr>
         </table>
+        <br>
         <input type="submit" value="Prisijungti"/>
         <input type="hidden" name="next" value="{{ next }}"/>
     </form>
-    <p><strong>-- OR --</strong></p>
-    <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
-
+<!--    <p><strong>&#45;&#45; OR &#45;&#45;</strong></p>-->
+<!--    <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>-->
+    <br>
     <p><a href="{% url 'password_reset' %}">Pamiršote slaptažodį?</a></p>
 </div>
 
