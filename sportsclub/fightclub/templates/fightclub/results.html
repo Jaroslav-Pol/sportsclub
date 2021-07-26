@@ -2,30 +2,32 @@
 
 {% block content %}
 
-<h2>Mano rezultatai</h2>
-<br>
-<div class="container">
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Data</th>
-            <th scope="col">Pavadinimas</th>
-            <th scope="col">Rezultatas</th>
-            <th scope="col">Trenerio komentaras</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for result in results %}
-        <tr>
-            <th scope="row">{{ result.date }}</th>
-            <td>{{ result.name }}</td>
-            <td>{{ result.result }}</td>
-            <td>{{ result.comment }}</td>
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+<div>
+    <h2>Mano rezultatai</h2>
+    <br>
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Data</th>
+                <th scope="col">Pavadinimas</th>
+                <th scope="col">Rezultatas</th>
+                <th scope="col">Trenerio komentaras</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for result in results %}
+            <tr>
+                <th scope="row">{{ result.date }}</th>
+                <td>{{ result.name }}</td>
+                <td>{{ result.result }}</td>
+                <td>{{ result.comment }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <br>
 </div>
-<br>
 
 {% endblock %}

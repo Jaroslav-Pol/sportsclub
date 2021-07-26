@@ -1,17 +1,21 @@
 {% extends "fightclub/base.html" %}
 
 {% block content %}
-<h2>Kovos klubas</h2>
-<br>
-{% if messages %}
-{% for message in messages %}
-<div class="alert alert-success" role="alert">
-    {{ message }}
+
+<div>
+    <h2>Sporto klubas</h2>
+    <br>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    <div class="container">
+        <h3>Sveiki atvykę į sporto klubą!</h3>
+        <p>{{ text }}</p>
+    </div>
 </div>
-{% endfor %}
-{% endif %}
-<div class="container">
-    <p>Sveiki atvykę į sporto klubą!</p>
-    <p>{{ text }}</p>
-</div>
+
 {% endblock %}>

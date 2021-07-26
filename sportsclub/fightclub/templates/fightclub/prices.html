@@ -1,14 +1,18 @@
 {% extends "fightclub/base.html" %}
 
 {% block content %}
-<h2>Mūsų narystės:</h2>
-<br>
-<div class="container">
-    {% for membership in memberships %}
-    <h4>{{ membership.name }} </h4>
-    <p>Kaina/mėn: {{ membership.price }}€ </p>
-    <p>{{ membership.description }}</p>
+
+<div>
+    <h2>Mūsų narystės:</h2>
     <br>
-    {% endfor %}
+    <div class="container">
+        {% for membership in memberships %}
+        <h4>{{ membership.name }} </h4>
+        <p>Kaina/mėn: {{ membership.price }}€ </p>
+        <p>{{ membership.description }}</p>
+        <br>
+        {% endfor %}
+    </div>
 </div>
+
 {% endblock %}>

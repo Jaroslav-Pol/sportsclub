@@ -2,45 +2,47 @@
 
 {% block content %}
 
-{% if form.errors %}
-<p>Prisijungimo klaida, bandykite dar kartą!</p>
-{% endif %}
+<div>
+    {% if form.errors %}
+    <p>Prisijungimo klaida, bandykite dar kartą!</p>
+    {% endif %}
 
-{% if messages %}
-{% for message in messages %}
-<div class="alert alert-success" role="alert">
-    {{ message }}
-</div>
-{% endfor %}
-{% endif %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
 
-{% if next %}
-{% if user.is_authenticated %}
-<p>Neturite prieigos prie šios informacijos. Turite prisijungti.</p>
-{% endif %}
-{% endif %}
-<div class="container">
-    <h2>Prisijungimas</h2><br/>
-    <form method="post" action="{% url 'login' %}">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>Vartotojas:</td>
-                <td>{{ form.username }}</td>
-            </tr>
-            <tr>
-                <td>Slaptažodis:</td>
-                <td>{{ form.password }}</td>
-            </tr>
-        </table>
+    {% if next %}
+    {% if user.is_authenticated %}
+    <p>Neturite prieigos prie šios informacijos. Turite prisijungti.</p>
+    {% endif %}
+    {% endif %}
+    <div class="container">
+        <h2>Prisijungimas</h2><br/>
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>Vartotojas:</td>
+                    <td>{{ form.username }}</td>
+                </tr>
+                <tr>
+                    <td>Slaptažodis:</td>
+                    <td>{{ form.password }}</td>
+                </tr>
+            </table>
+            <br>
+            <input type="submit" value="Prisijungti"/>
+            <input type="hidden" name="next" value="{{ next }}"/>
+        </form>
+        <!--    <p><strong>&#45;&#45; OR &#45;&#45;</strong></p>-->
+        <!--    <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>-->
         <br>
-        <input type="submit" value="Prisijungti"/>
-        <input type="hidden" name="next" value="{{ next }}"/>
-    </form>
-<!--    <p><strong>&#45;&#45; OR &#45;&#45;</strong></p>-->
-<!--    <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>-->
-    <br>
-    <p><a href="{% url 'password_reset' %}">Pamiršote slaptažodį?</a></p>
+        <p><a href="{% url 'password_reset' %}">Pamiršote slaptažodį?</a></p>
+    </div>
 </div>
 
 {% endblock %}

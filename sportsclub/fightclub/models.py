@@ -2,8 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-# Create your models here.
-
 class Group(models.Model):
     """Galimos grupės"""
     name = models.CharField('Grupės pavadinimas', max_length=200, help_text='Įveskite grupės pavadinimą')
@@ -54,6 +52,7 @@ class UserMembership(models.Model):
 
 
 class SportTest(models.Model):
+    """Sportiniai testai klientams"""
     name = models.CharField('Testo pavadinimas', max_length=200)
     result_exp = models.CharField('Pažengusio rezultato slenkstis', max_length=200)
     result_sport = models.CharField('Sportinio rezultato slenkstis', max_length=200)
@@ -68,6 +67,7 @@ class SportTest(models.Model):
 
 
 class UserSportResult(models.Model):
+    """Klientu sportiniai pasiekimai"""
     name = models.ForeignKey(SportTest, verbose_name='Testas', on_delete=models.SET_NULL, null=True, blank=True)
     user = models.ForeignKey(User, verbose_name='Narys', on_delete=models.SET_NULL, null=True, blank=True)
     date = models.DateField('Atlikimo data', null=True, blank=True)
@@ -83,6 +83,7 @@ class UserSportResult(models.Model):
 
 
 class UserProfile(models.Model):
+    """User profilio papildymas"""
     user = models.OneToOneField(User, verbose_name='Vartotojas', on_delete=models.CASCADE)
     phone_nr = models.CharField('Telefono numeris', max_length=20, null=True, blank=True)
     birth_date = models.DateField('Gimimo data', null=True, blank=True)

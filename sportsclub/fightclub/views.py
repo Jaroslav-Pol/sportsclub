@@ -8,7 +8,6 @@ from .forms import ContactForm
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
 
-# siap sau zen of python
 import this
 
 

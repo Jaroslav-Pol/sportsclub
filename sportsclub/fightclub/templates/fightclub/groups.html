@@ -1,13 +1,17 @@
 {% extends "fightclub/base.html" %}
 
 {% block content %}
-<h2>Mūsų grupės:</h2>
-<br>
-<div class="container">
-    {% for group in groups %}
-    <a class="link-primary" href="{% url 'group' group.id %}"><h4>{{ group.name }} </h4></a>
-    <p>{{ group.week_day }} {{ group.start_time }}</p>
+
+<div>
+    <h2>Mūsų grupės:</h2>
     <br>
-    {% endfor %}
+    <div class="container">
+        {% for group in groups %}
+        <a class="link-primary" href="{% url 'group' group.id %}"><h4>{{ group.name }} </h4></a>
+        <p>{{ group.week_day }} {{ group.start_time }}</p>
+        <br>
+        {% endfor %}
+    </div>
 </div>
+
 {% endblock %}>
