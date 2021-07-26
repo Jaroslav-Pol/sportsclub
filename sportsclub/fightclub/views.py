@@ -93,7 +93,6 @@ def register(request):
     return render(request, 'registration/register.html')
 
 
-@csrf_protect
 def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -111,6 +110,7 @@ def contact(request):
                 send_mail(subject, message, 'catastronaut.teting@gmail.com', ['catastronaut.teting@gmail.com'])
             except BadHeaderError:
                 return HttpResponse('Netinkama antraštė')
+
             messages.success(request, 'Jūsų žinutė išsiūsta!')
             return redirect('index')
 
