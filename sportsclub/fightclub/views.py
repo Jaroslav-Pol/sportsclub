@@ -48,11 +48,12 @@ def prices(request):
 @login_required
 def profile(request):
     """ideti user membership info, grupou info"""
-    # profile = User.objects.all().filter(username=request.user.username)
-    # context = {
-    #     'profile': profile,
-    # }
-    return render(request, 'fightclub/profile.html')
+    membership = UserMembership.objects.filter(member=request.user.id).get()
+    context = {
+        'membership': membership,
+        'groups': groups,
+    }
+    return render(request, 'fightclub/profile.html', context=context)
 
 
 @login_required
@@ -92,6 +93,7 @@ def register(request):
     return render(request, 'registration/register.html')
 
 
+@csrf_protect
 def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
