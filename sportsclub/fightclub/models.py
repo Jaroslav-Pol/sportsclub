@@ -86,6 +86,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, verbose_name='Vartotojas', on_delete=models.CASCADE)
     phone_nr = models.CharField('Telefono numeris', max_length=20, null=True, blank=True)
     birth_date = models.DateField('Gimimo data', null=True, blank=True)
+    goal = models.TextField('Tikslas', max_length=2000, null=True, blank=True)
 
     def __str__(self):
         return f'{self.user.username}'

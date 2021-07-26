@@ -1,5 +1,7 @@
 from django.contrib import admin
 from .models import Group, Membership, UserMembership, UserSportResult, SportTest, UserProfile
+from django.contrib.auth.models import User
+from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
 
 
 class UserMembershipInline(admin.TabularInline):
@@ -37,9 +39,31 @@ class UserProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'birth_date', 'phone_nr')
 
 
+class UserProfileInline(admin.StackedInline):
+    model = UserProfile
+    max_num = 1
+    can_delete = False
+
+
+class UserAdmin(AuthUserAdmin):
+    def add_view(self, *args, **kwargs):
+        self.inlines = []
+        return super(UserAdmin, self).add_view(*args, **kwargs)
+
+    def change_view(self, *args, **kwargs):
+        self.inlines = [UserProfileInline]
+        return super(UserAdmin, self).change_view(*args, **kwargs)
+
+
+
+
 admin.site.register(Group, GroupAdmin)
 admin.site.register(Membership, MembershipAdmin)
 admin.site.register(UserMembership, UserMembershipAdmin)
 admin.site.register(SportTest, SportTestAdmin)
 admin.site.register(UserSportResult, UserSportResultAdmin)
 admin.site.register(UserProfile, UserProfileAdmin)
+# unregister old user admin
+admin.site.unregister(User)
+# register new user admin
+admin.site.register(User, UserAdmin)
