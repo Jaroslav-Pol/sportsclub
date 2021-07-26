@@ -34,10 +34,6 @@ class UserSportResultAdmin(admin.ModelAdmin):
     list_filter = ('name', 'date')
     search_fields = ('user__username',)
 
-#
-# class UserProfileAdmin(admin.ModelAdmin):
-#     list_display = ('user', 'birth_date', 'phone_nr')
-
 
 class UserProfileInline(admin.StackedInline):
     model = UserProfile
@@ -53,8 +49,6 @@ class UserAdmin(AuthUserAdmin):
     def change_view(self, *args, **kwargs):
         self.inlines = [UserProfileInline]
         return super(UserAdmin, self).change_view(*args, **kwargs)
-
-
 
 
 admin.site.register(Group, GroupAdmin)

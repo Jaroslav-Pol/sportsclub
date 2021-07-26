@@ -20,11 +20,9 @@ from django.conf.urls.static import static
 from django.views.generic import RedirectView
 
 urlpatterns = [
-    path('fightclub/admin/', admin.site.urls),
-    path('fightclub/', include('fightclub.urls')),
-    path('', RedirectView.as_view(url='fightclub/', permanent=True)),
-    path('oauth/', include('social_django.urls', namespace='social')),
-
-
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
-  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+                  path('fightclub/admin/', admin.site.urls),
+                  path('fightclub/', include('fightclub.urls')),
+                  path('', RedirectView.as_view(url='fightclub/', permanent=True)),
+                  path('oauth/', include('social_django.urls', namespace='social')),
+              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
+                + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
