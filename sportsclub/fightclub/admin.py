@@ -34,9 +34,9 @@ class UserSportResultAdmin(admin.ModelAdmin):
     list_filter = ('name', 'date')
     search_fields = ('user__username',)
 
-
-class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'birth_date', 'phone_nr')
+#
+# class UserProfileAdmin(admin.ModelAdmin):
+#     list_display = ('user', 'birth_date', 'phone_nr')
 
 
 class UserProfileInline(admin.StackedInline):
@@ -62,7 +62,7 @@ admin.site.register(Membership, MembershipAdmin)
 admin.site.register(UserMembership, UserMembershipAdmin)
 admin.site.register(SportTest, SportTestAdmin)
 admin.site.register(UserSportResult, UserSportResultAdmin)
-admin.site.register(UserProfile, UserProfileAdmin)
+admin.site.register(UserProfile)
 # unregister old user admin
 admin.site.unregister(User)
 # register new user admin

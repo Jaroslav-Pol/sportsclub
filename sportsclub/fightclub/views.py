@@ -49,9 +49,10 @@ def prices(request):
 def profile(request):
     """ideti user membership info, grupou info"""
     membership = UserMembership.objects.filter(member=request.user.id).get()
+    profile = UserProfile.objects.filter(user=request.user.id).get()
     context = {
         'membership': membership,
-        'groups': groups,
+        'profile': profile,
     }
     return render(request, 'fightclub/profile.html', context=context)
 
