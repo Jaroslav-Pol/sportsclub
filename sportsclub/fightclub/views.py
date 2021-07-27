@@ -47,7 +47,7 @@ def prices(request):
 @login_required
 def profile(request):
     """ideti user membership info, grupou info"""
-    membership = UserMembership.objects.filter(member=request.user.id).get()
+    membership = get_object_or_404(UserMembership, member=request.user.id)
     profile = UserProfile.objects.filter(user=request.user.id).get()
     context = {
         'membership': membership,
